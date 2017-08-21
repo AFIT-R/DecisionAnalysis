@@ -1,0 +1,34 @@
+Package: MODA
+Type: Package
+Title: Implementation of Multi Objective Decision Analysis
+Version: 0.1.0.9000
+Authors@R: c( 
+    person("Josh", "Deehr", 
+           email = "josh.deehr@afit.edu", 
+           role = c("aut", "cre")), 
+    person("Bradley", "Boehmke", 
+           email = "bradleyboehmke@gmail.com", 
+           role = c("aut")),
+    person("Brandon", "Greenwell",
+           email = "greenwell.brandon@gmail.com",
+           role = c("aut")),
+    person("Andrew", "McCarthy",
+           email = "andrew.mccarthy@theperducogroup.com",
+           role = c("aut"))
+    )
+Maintainer: Josh Deehr <josh.deehr@afit.edu>
+Date: 2017-08-21
+Description: What the package does (one paragraph).
+Depends: R (>= 3.4.0)
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ggplot2,
+    stats
+RoxygenNote: 6.0.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr    

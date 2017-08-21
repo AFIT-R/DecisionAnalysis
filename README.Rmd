@@ -1,0 +1,23 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+`MODA` implements __M__ulti __O__bjective __D__ecision __A__nalysis algorithms... 
+
+# Installation
+
+`MODA` is currently under development and will be available soon.
+
+
