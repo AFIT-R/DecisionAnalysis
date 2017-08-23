@@ -12,7 +12,7 @@ MAVF_breakout <- function(SAVF_matrix, weights, names){
   value <- data.frame(names, MAVF, t(SAVF))
 
   value %>%
-    gather(Measurement, Value, 3:length(value)) %>%
+    gather(Measurement, Value, -c(1, 2)) %>%
     group_by(Measurement) %>%
     ggplot(aes(x = reorder(names, MAVF), y = Value, fill = Measurement)) +
     geom_bar(stat = "identity") +
