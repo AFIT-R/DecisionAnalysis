@@ -22,3 +22,4 @@ MAVF_breakout <- function(SAVF_matrix, weights, names){
     ylab("Weighted SAVF Scores") + xlab("Alternatives") +
     ggtitle("Breakout of Weighted SAVF")
 }
+
