@@ -1,7 +1,10 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-`MODA` implements \_\_M\_\_ulti \_\_O\_\_bjective \_\_D\_\_ecision \_\_A\_\_nalysis algorithms...
+`MODA` implements Multi Objective Decision Analysis algorithms...
 
 Installation
-============
+------------
 
-`MODA` is currently under development and will be available soon.
+The `MODA` package is currently in development and only available from GitHub, but can easily be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package:
+
+    if (!requireNamespace("devtools")) install.packages("devtools")
+    devtools::install_github("AFIT-R/MODA")

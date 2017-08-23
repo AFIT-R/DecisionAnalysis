@@ -14,10 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-`MODA` implements __M__ulti __O__bjective __D__ecision __A__nalysis algorithms... 
+`MODA` implements Multi Objective Decision Analysis algorithms... 
 
-# Installation
+## Installation
 
-`MODA` is currently under development and will be available soon.
+The `MODA` package is currently in development and only available from GitHub, but can easily be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package:
 
+```
+if (!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("AFIT-R/MODA")
+```
 
