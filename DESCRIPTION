@@ -19,13 +19,15 @@ Authors@R: c(
 Maintainer: Josh Deehr <josh.deehr@afit.edu>
 Date: 2017-08-21
 Description: What the package does (one paragraph).
-Depends: R (>= 3.4.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Depends: 
+    R (>= 3.4.0),
     ggplot2,
-    stats
+    tidyr,
+    dplyr
+Imports: stats
 RoxygenNote: 6.0.1
 Suggests: 
     knitr,

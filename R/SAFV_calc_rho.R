@@ -11,14 +11,14 @@ SAVF_calc_rho <- function(x_low, x_mid, x_high, increment = 1){
 
     if (z <= 0.5) {
       f1 <- function (r) (-0.5 + (1 - exp(-z / r)) / (1 - exp(-1 / r)))
-      value <- uniroot(f1, interval = c(0,13))
+      value <- stats::uniroot(f1, interval = c(0,13))
       R <- value$root
       rho = R * (x_high - x_low)
       return(rho)
     } else {
       z = 1-z
       f1 <- function (r) (-0.5 + (1 - exp(-z / r)) / (1 - exp(-1 / r)))
-      value <- uniroot(f1, interval = c(0,13))
+      value <- stats::uniroot(f1, interval = c(0,13))
       R <- -value$root
       rho = R * (x_high - x_low)
       return(rho)
@@ -27,14 +27,14 @@ SAVF_calc_rho <- function(x_low, x_mid, x_high, increment = 1){
 
       if (z <= 0.5) {
         f1 <- function (r) (-0.5 + (1 - exp(-z / r)) / (1 - exp(-1 / r)))
-        value <- uniroot(f1, interval = c(0,13))
+        value <- stats::uniroot(f1, interval = c(0,13))
         R <- value$root
         rho = R * (x_high - x_low)
         return(rho)
       } else {
         z = 1 - z
         f1 <- function (r) (-0.5 + (1 - exp(-z / r)) / (1 - exp(-1 / r)))
-        value <- uniroot(f1, interval = c(0,13))
+        value <- stats::uniroot(f1, interval = c(0,13))
         R <- -value$root
         rho = R * (x_high - x_low)
         return(rho)
