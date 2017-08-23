@@ -3,6 +3,8 @@
 #' Required Inputs: Attribute raw value (x), Lowest value (x_low), midpoint value (x_mid), highest value (x_high), Increment(1 = increasing, 2 = decreasing).
 #'
 #' Output: Linear SAVF curve with attribute plotted.
+#'
+#' @export
 
 SAVF_lin_plot <- function(x, x_low, x_mid, x_high, increment = 1) {
 

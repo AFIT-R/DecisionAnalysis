@@ -3,6 +3,8 @@
 #' Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, the alternativenames (names), and which criteria to conduct sensitivity analysis on (criteria).
 
 #' Output: Sensitivity Analysis graph
+#'
+#' @export
 
 
 sensitivity_plot <- function(SAVF_matrix, weights, names, criteria){

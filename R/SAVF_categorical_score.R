@@ -3,6 +3,8 @@
 #' Required Inputs: Attribute raw value or vector or values (x), vector of categories (categories) and numeric vector of category weights (weights).
 
 #' Output: Categorical SAVF Score.
+#'
+#' @export
 
 SAVF_categorical_score <- function(x, categories, weights){
 

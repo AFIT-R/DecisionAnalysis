@@ -3,6 +3,8 @@
 #' Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, and vector or attributes names (names).
 
 #' Output: MAVF breakout graph
+#'
+#' @export
 
 MAVF_breakout <- function(SAVF_matrix, weights, names){
 

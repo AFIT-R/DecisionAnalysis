@@ -3,6 +3,8 @@
 #' Required inputs:Lowest Value (x_low), Midpoint Value (x_mid), Highest Value (x_high), Increment(1 = increasing, 2 = decreasing).
 
 #' Output: Rho
+#'
+#' @export
 
 SAVF_calc_rho <- function(x_low, x_mid, x_high, increment = 1){
 

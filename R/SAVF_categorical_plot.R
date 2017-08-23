@@ -3,6 +3,8 @@
 #' Required Inputs: Vector of categories (categories) and numeric vector of category scores (scores).
 #'
 #' Output: Categorical SAVF graph.
+#'
+#' @export
 
 SAVF_cat_plot <- function(categories, scores) {
 

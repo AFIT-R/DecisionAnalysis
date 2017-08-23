@@ -3,6 +3,8 @@
 #' Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, and vector or attributes names (names).
 
 #' Output: MAVF Scores.
+#'
+#' @export
 
 MAVF_Scores <- function(SAVF_matrix, weights, names){
 

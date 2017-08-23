@@ -3,6 +3,8 @@
 #' Required Inputs: Attribute raw value (x), Lowest value (x_low), midpoint value (x_mid), highest value (x_high), Increment(1 = increasing, 2 = decreasing).
 #'
 #' Output: Exponential SAVF curve with attribute plotted.
+#'
+#' @export
 
 SAVF_exp_plot <- function(x, x_low, x_mid, x_high, increment = 1) {
 
