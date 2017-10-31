@@ -21,7 +21,7 @@ sensitivity_plot <- function(SAVF_matrix, weights, names, criteria){
     names(M) <- c("Names",x)}
 
   M %>%
-    gather(Weight, Value, 2:length(M)) %>%
+    gather(Weight, Value, -c(1)) %>%
     ggplot(aes(x = as.numeric(Weight), y = Value,
                group = Names, colour = Names)) +
     geom_line() + geom_vline(xintercept = weights[i]) +
