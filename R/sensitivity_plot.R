@@ -14,11 +14,11 @@ sensitivity_plot <- function(SAVF_matrix, weights, names, criteria){
   x <- seq(0, 1, by = .1)
   m <- matrix(NA, nrow = length(weights), ncol = 11)
 
-  for (j in 1:length(weights)){
-    m[j,] <- (1 - x)*(weights[j] / (1 - weights[i]))
-    m[i,] <- x
-    M <- data.frame(MAVF_Scores(SAVF_matrix, m, names))
-    names(M) <- c("Names",x)}
+  m<-sapply(1:length(weights), function(j) m[j,]<-(1 - x)*(weights[j] / (1 - weights[i])))
+  m<-t(m)
+  m[i,] <- x
+  M <- data.frame(MAVF_Scores(SAVF_matrix, m, names))
+  names(M) <- c("Names", x)
 
   M %>%
     gather(Weight, Value, -c(1)) %>%
