@@ -18,19 +18,23 @@ Authors@R: c(
     )
 Maintainer: Josh Deehr <josh.deehr@afit.edu>
 Date: 2017-08-21
-Description: What the package does (one paragraph).
+Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
+    distributions and increasing or decreasing linear or exponential functions.The SAVF 
+    scores are used, along with a weights matrix, to calculate a Multi Attribute Value 
+    Function (MAVF) score.Additional functions provide the ability to plot the value hierarchy tree, 
+    plot the three types of SAVFs,plot a breakout of each alternatives' MAVF score, and plot a sensitivity
+    analysis graph that illustrates how the MAVF scores change if the criteria weights change.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 3.4.0),
-    ggplot2,
-    tidyr,
-    dplyr
-Imports: stats
+    R (>= 2.10)
+Imports: stats, Rcpp (>= 0.12.12), ggplot2, tidyr, dplyr, data.tree, graphics
 RoxygenNote: 6.0.1
 Suggests: 
     knitr,
     rmarkdown,
     testthat
-VignetteBuilder: knitr    
+VignetteBuilder: knitr 
+NeedsCompilation: yes
+LinkingTo: Rcpp
