@@ -2,14 +2,50 @@
 % Please edit documentation in R/sensitivity_plot.R
 \name{sensitivity_plot}
 \alias{sensitivity_plot}
-\title{Description: This function will take a matrix of SAVF scores and show how each alternatives MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
-Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, the alternativenames (names), and which criteria to conduct sensitivity analysis on (criteria).
-Output: Sensitivity Analysis graph}
+\title{Sensitivity Analysis Graph}
 \usage{
-sensitivity_plot(SAVF_matrix, weights, names, criteria)
+sensitivity_plot(SAVF_matrix, weights, names, criteria, title = TRUE)
+}
+\arguments{
+\item{SAVF_matrix}{Matrix of SAVF scores}
+
+\item{weights}{Numeric vector of SAVF weights}
+
+\item{names}{The names of the alternatives}
+
+\item{criteria}{Numeric value equal to the column number of the SAVF_matrix that contains the desired criteria to conduct sensitivity analysis on}
+
+\item{title}{True=The title is the column name associated with the selected criteria, False=no title, Default: TRUE}
+}
+\value{
+Sensitivity Analysis graph
 }
 \description{
-Description: This function will take a matrix of SAVF scores and show how each alternatives MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
-Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, the alternativenames (names), and which criteria to conduct sensitivity analysis on (criteria).
-Output: Sensitivity Analysis graph
+Takes a matrix of Single Attribute Value Function (SAVF) scores and show how each alternatives 
+MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
+}
+\examples{
+\dontrun{ 
+
+library(dplyr)
+
+qbdata <- NFLcombine \%>\%
+ filter(year == '2011', position == 'QB', wonderlic != '0') \%>\%
+ select(c(2, 8, 9, 12, 15, 17, 18, 25, 20))  
+qbdata[qbdata == 0] = NA
+
+Height <- SAVF_exp_score(qbdata$heightinchestotal, 68, 75.21, 82)
+Weight <- SAVF_exp_score(qbdata$weight, 185, 224.34, 275)
+Forty <- SAVF_exp_score(qbdata$fortyyd, 4.3, 4.81, 5.4, increasing=FALSE)
+Shuttle <- SAVF_exp_score(qbdata$twentyss, 3.8, 4.3, 4.9, increasing=FALSE)
+Vertical <- SAVF_exp_score(qbdata$vertical, 21, 32.04, 40)
+Broad <- SAVF_exp_score(qbdata$broad, 90, 111.24, 130)
+Wonderlic <- SAVF_exp_score(qbdata$wonderlic, 0, 27.08, 50)
+
+SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, Vertical, Broad, Wonderlic)
+weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
+
+sensitivity_plot(SAVF_matrix, weights, qbdata$name, 4)
+}
+
 }

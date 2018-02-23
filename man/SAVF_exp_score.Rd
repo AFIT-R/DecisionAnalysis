@@ -2,14 +2,33 @@
 % Please edit documentation in R/SAVF_exp_score.R
 \name{SAVF_exp_score}
 \alias{SAVF_exp_score}
-\title{Description: This function will calculate the SAVF score for an exponentially increasing or decreasing function. It calls the SAVF_calc_rho function, so knowing rho before hand is not necessary.
-Required Inputs: Attribute raw value (x), Lowest value (x_low), midpoint value (x_mid), highest value (x_high), Increment(1 = increasing, 2 = decreasing).
-Output: Exponential SAVF Score}
+\title{Single Attribute Value Function (SAVF) Exponential Score}
 \usage{
-SAVF_exp_score(x, x_low, x_mid, x_high, increment = 1)
+SAVF_exp_score(x, x_low, x_mid, x_high, increasing = TRUE)
+}
+\arguments{
+\item{x}{Attribute raw value}
+
+\item{x_low}{Lowest value}
+
+\item{x_mid}{Midpoint value}
+
+\item{x_high}{Highest value}
+
+\item{increasing}{TRUE=increasing, FALSE=decreasing, Default: TRUE}
+}
+\value{
+Exponential SAVF Score
 }
 \description{
-Description: This function will calculate the SAVF score for an exponentially increasing or decreasing function. It calls the SAVF_calc_rho function, so knowing rho before hand is not necessary.
-Required Inputs: Attribute raw value (x), Lowest value (x_low), midpoint value (x_mid), highest value (x_high), Increment(1 = increasing, 2 = decreasing).
-Output: Exponential SAVF Score
+: Calculates the Single Attribute Values Function (SAVF) score for an exponentially increasing or decreasing function. 
+It calls the SAVF_calc_rho function, so knowing rho before hand is not necessary.
+}
+\details{
+For Z=((x_mid - x_low) / (x_high - x_low)),
+Z can not be in (0.51,0.49)
+}
+\examples{
+\dontrun{ SAVF_exp_score(70, 0, 90, 150, FALSE)}
+
 }

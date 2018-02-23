@@ -2,14 +2,41 @@
 % Please edit documentation in R/MAVF_breakout.R
 \name{MAVF_breakout}
 \alias{MAVF_breakout}
-\title{Description: This function will take a matrix of SAVF scores and show the break out of each alternatives weighted SAVF scores who’s sum is their MAVF score.
-Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, and vector or attributes names (names).
-Output: MAVF breakout graph}
+\title{Multiple Attribute Value Function (MAVF) Breakout}
 \usage{
 MAVF_breakout(SAVF_matrix, weights, names)
 }
+\arguments{
+\item{SAVF_matrix}{Matrix of SAVF scores}
+
+\item{weights}{Numeric vector of SAVF weights}
+
+\item{names}{Vector of attribute names}
+}
+\value{
+MAVF breakout graph
+}
 \description{
-Description: This function will take a matrix of SAVF scores and show the break out of each alternatives weighted SAVF scores who’s sum is their MAVF score.
-Required Inputs: Matrix of SAVF scores (SAVF_matrix), numeric vector of SAVF weights, and vector or attributes names (names).
-Output: MAVF breakout graph
+: Takes a matrix of Single Attribute Value Function (SAVF) scores and shows the break out of each alternative's weighted SAVF scores.
+The sum of the alternative's weighted SAVF scores is their MAVF score.
+}
+\examples{
+\dontrun{ 
+
+qbdata <- NFLcombine
+
+Height <- SAVF_exp_score(qbdata$heightinchestotal, 68, 75.21, 82)
+Weight <- SAVF_exp_score(qbdata$weight, 185, 224.34, 275)
+Forty <- SAVF_exp_score(qbdata$fortyyd, 4.3, 4.81, 5.4, increasing=FALSE)
+Shuttle <- SAVF_exp_score(qbdata$twentyss, 3.8, 4.3, 4.9, increasing=FALSE)
+Vertical <- SAVF_exp_score(qbdata$vertical, 21, 32.04, 40)
+Broad <- SAVF_exp_score(qbdata$broad, 90, 111.24, 130)
+Wonderlic <- SAVF_exp_score(qbdata$wonderlic, 0, 27.08, 50)
+
+SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, 
+                  Vertical, Broad, Wonderlic)
+weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
+
+MAVF_breakout(SAVF_matrix, weights, qbdata$name)}
+
 }
