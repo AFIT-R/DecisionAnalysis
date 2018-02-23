@@ -2,14 +2,24 @@
 % Please edit documentation in R/SAVF_categorical_score.R
 \name{SAVF_categorical_score}
 \alias{SAVF_categorical_score}
-\title{Description: This function will calculate the SAVF score for a categorical value.
-Required Inputs: Attribute raw value or vector or values (x), vector of categories (categories) and numeric vector of category weights (weights).
-Output: Categorical SAVF Score.}
+\title{Single Attribute Value Function (SAVF) Categorical Score}
 \usage{
 SAVF_categorical_score(x, categories, weights)
 }
+\arguments{
+\item{x}{Attribute raw value}
+
+\item{categories}{Vector of categories}
+
+\item{weights}{Numeric vector of category weights}
+}
+\value{
+Categorical SAVF Score
+}
 \description{
-Description: This function will calculate the SAVF score for a categorical value.
-Required Inputs: Attribute raw value or vector or values (x), vector of categories (categories) and numeric vector of category weights (weights).
-Output: Categorical SAVF Score.
+: Calculates the Single Attribute Value Function (SAVF) score for a categorical value.
+}
+\examples{
+\dontrun{ SAVF_categorical_score("Tom", c("Tom", "Bill" ,"Jerry"), c(0.1, 0.25, 0.65))}
+
 }

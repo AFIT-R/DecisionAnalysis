@@ -1,4 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README\.Rmd$
-^README-.*\.png$
+README.Rmd
+^\.travis\.yml$
+^.*\.dll$
+^.*\.o$
