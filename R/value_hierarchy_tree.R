@@ -1,20 +1,20 @@
 #'@title Value Hierarchy Tree
 #'
-#'@description: Plots a value hierarchy tree with weights on the leaves (end nodes)
+#'@description: Plots a value hierarchy tree
 #'
 #'@param ... One or more character vectors containing a single level of nodes. The character vector containing the end nodes should not be entered here. 
 #'If there isn't a node for a level of the branch, it should be entered as ""
 #'@param leaves Character vector of values containing the last node of the branches
-#'@param weights Character or numeric vector of weights associated with the end node of the branches
-#'@param nodestyle Style of the nodes
-#'@param nodeshape Shape of the nodes. Polygon, ellipse, circle, box, etc.
-#'@param nodefillcolor Fill color of the nodes
-#'@param nodefontname Font of the nodes
-#'@param nodefontcolor Font color of the nodes
-#'@param leavesshape Shape of the leaves
-#'@param leavesfillcolor Fill color of the leaves
-#'@param leavesfontname Font of the leaves
-#'@param leavesfontcolor Font color of the leaves
+#'@param weights Character or numeric vector of weights associated with the end node of the branches (Optional)
+#'@param nodestyle Style of the nodes, default is filled, rounded
+#'@param nodeshape Shape of the nodes, default is box
+#'@param nodefillcolor Fill color of the nodes, default is white
+#'@param nodefontname Font of the nodes, default is helvetica
+#'@param nodefontcolor Font color of the nodes, default is black
+#'@param leavesshape Shape of the leaves, default is egg
+#'@param leavesfillcolor Fill color of the leaves, default is gray
+#'@param leavesfontname Font of the leaves, default is helvetica
+#'@param leavesfontcolor Font color of the leaves, default is black
 #'
 #'@return Value hierarchy tree plot
 #'
@@ -39,10 +39,11 @@
 #'@export
 
 
-value_hierarchy_tree<-function(...,leaves,weights, 
+value_hierarchy_tree <- function(...,leaves,weights, 
                          nodestyle="filled, rounded",nodeshape="box",nodefillcolor="white",nodefontname="helvetica",nodefontcolor="black",
                          leavesshape="egg",leavesfillcolor="gray",leavesfontcolor="black", leavesfontname = "helvetica"){
   
+  #Check if leaves is character
   if(class(leaves) != "character") {
     stop(
          'leaves must be a character vector\n',
@@ -50,33 +51,43 @@ value_hierarchy_tree<-function(...,leaves,weights,
          'leaves: ', class(leaves), '\n')
   }
 
-  
+  #Check if any end nodes are not in the leaves vector
   if(!is.na(match("",leaves))) {
     stop('All end nodes must be in the leaves vector')
   }
   
-
-  treebranches<- matrix(NA, nrow = length(weights), ncol = 1)
-  treebranches<- as.data.frame(treebranches)
-  colnames(treebranches)<-"pathString"
+  #initialize treebranches matrix for use in as.Node function
+  treebranches <- matrix(NA, nrow = length(leaves), ncol = 1)
+  treebranches <- as.data.frame(treebranches)
+  colnames(treebranches) <- "pathString"
   
-  leavesweightss<-paste0(leaves,"\n","(",weights,")")
-  treebranches$pathString<-paste(...,leavesweightss,sep="/")
+  #Check if weights input was provided. If provided, then combine weights and end nodes into one string
+  if(missing(weights)) {
+    leavesweights <- leaves
+  } else {
+    leavesweights <- paste0(leaves,"\n","(",weights,")")
+  }
   
-  treebranches$pathString<-gsub("//{2,}", "//",treebranches$pathString)
+  #Transform inputs into format for as.Node function
+  treebranches$pathString <- paste(...,leavesweights,sep="/")
   
+  #Replace all instances of more than one slash (/) with just one slash (/)
+  treebranches$pathString <- gsub("//{2,}", "//",treebranches$pathString)
+  
+  #Create value hierarchy tree
   finaltree<-data.tree::as.Node(treebranches)
   
-  
+  #set node style for plot
   data.tree::SetNodeStyle(finaltree, style = nodestyle, shape = nodeshape, 
                           fontcolor = nodefontcolor,
                           fillcolor = nodefillcolor, 
                           fontname = nodefontname, tooltip=data.tree::GetDefaultTooltip)
   
+  #set leaves style for plot
   data.tree::Do(finaltree$leaves, 
      function(node) data.tree::SetNodeStyle(node, shape = leavesshape, 
                                  fillcolor = leavesfillcolor, fontcolor = leavesfontcolor, fontname = leavesfontname))
-  
+  #plot value hierarchy tree
   graphics::plot(finaltree)
   
 }
