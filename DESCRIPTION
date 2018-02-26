@@ -34,7 +34,8 @@ RoxygenNote: 6.0.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    gridExtra
 VignetteBuilder: knitr 
 NeedsCompilation: yes
 LinkingTo: Rcpp
