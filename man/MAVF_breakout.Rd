@@ -23,7 +23,7 @@ The sum of the alternative's weighted SAVF scores is their MAVF score.
 \examples{
 \dontrun{ 
 
-qbdata <- NFLcombine
+qbdata <- NFLcombine[1:7,]
 
 Height <- SAVF_exp_score(qbdata$heightinchestotal, 68, 75.21, 82)
 Weight <- SAVF_exp_score(qbdata$weight, 185, 224.34, 275)
@@ -34,7 +34,7 @@ Broad <- SAVF_exp_score(qbdata$broad, 90, 111.24, 130)
 Wonderlic <- SAVF_exp_score(qbdata$wonderlic, 0, 27.08, 50)
 
 SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, 
-                  Vertical, Broad, Wonderlic)
+                 Vertical, Broad, Wonderlic)
 weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
 
 MAVF_breakout(SAVF_matrix, weights, qbdata$name)}
