@@ -2,6 +2,9 @@
 #'
 #' The MODA package contains all of the necessary functions required to plot weighted and unweighted value hierarchy trees, calculate and plot linear, exponential, and categorical single attribute value functions, 
 #' calculate and graph multi value attribute functions, and conduct sensitivity analysis.
+#' 
+#' Start with the vignette to learn more about using the MODA package:
+#' browseVignettes(package = "MODA")
 #'
 #' @examples 
 #'
