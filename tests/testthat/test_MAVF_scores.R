@@ -24,6 +24,7 @@ test_that("MAVF_scores provides proper messages and warnings",{
   expect_error(MAVF_Scores(SAVF_matrix, weights, c("Greg McElroy","Blaine Gabbert","Christian Ponder")))
   expect_warning(MAVF_Scores(SAVF_matrix, c(0.096, 0.224, 0.092, 0.138, 0.150, 0.220, 0.05), names))
   expect_warning(MAVF_Scores(SAVF_matrix, c(0.096, 0.224, 0.092, 0.155, 0.175, 0.228, 0.15), names))
+  expect_error(MAVF_Scores(SAVF_matrix, c("0.096", "0.224", "0.092", "0.138", "0.152", "0.228", "0.07"), names))
 })
 
 SAVF_matrix<-as.matrix(SAVF_matrix)

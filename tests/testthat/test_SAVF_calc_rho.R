@@ -3,6 +3,7 @@ test_that("SAVF_calc_rho provides proper messages and warnings",{
   expect_error(SAVF_calc_rho(90, 79, 82, TRUE))
   expect_error(SAVF_calc_rho(90, 79, 95, FALSE))
   expect_error(SAVF_calc_rho(90, 91, 88, FALSE))
+  expect_error(SAVF_calc_rho(68, 75, 82, TRUE))
 })
 
 test_that("SAVF_calc_rho has correct dimensions and output type",{
