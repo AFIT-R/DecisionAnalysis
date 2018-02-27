@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/whaleshark16/MODA.svg?branch=master)](https://travis-ci.org/whaleshark16/MODA) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/AFIT-R/MODA?branch=master&svg=true)](https://ci.appveyor.com/project/AFIT-R/MODA) [![Coverage Status](https://codecov.io/github/AFIT-R/MODA/coverage.svg?branch=master)](https://codecov.io/github/whaleshark16/MODA?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/MODA)](https://cran.r-project.org/package=MODA)
+[![Build Status](https://travis-ci.org/whaleshark16/MODA.svg?branch=master)](https://travis-ci.org/whaleshark16/MODA) [![Coverage Status](https://codecov.io/github/whaleshark16/MODA/coverage.svg?branch=master)](https://codecov.io/github/whaleshark16/MODA?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/MODA)](https://cran.r-project.org/package=MODA)
 
 MODA
 ----
