@@ -4,19 +4,19 @@ Title: Implementation of Multi Objective Decision Analysis
 Version: 0.1.0.9000
 Authors@R: c( 
     person("Josh", "Deehr", 
-           email = "josh.deehr@afit.edu", 
+           email = "josh.deehr@gmail.com", 
            role = c("aut", "cre")), 
-    person("Bradley", "Boehmke", 
-           email = "bradleyboehmke@gmail.com", 
+    person("Christopher", "Smith", 
+           email = "Christopher.Smith@afit.edu", 
            role = c("aut")),
-    person("Brandon", "Greenwell",
-           email = "greenwell.brandon@gmail.com",
+    person("Jason", "Freels",
+           email = "Jason.Freels@afit.edu",
            role = c("aut")),
-    person("Andrew", "McCarthy",
-           email = "andrew.mccarthy@theperducogroup.com",
+    person("Emily", "Meyer",
+           email = "emily.meyer@theperducogroup.com",
            role = c("aut"))
     )
-Maintainer: Josh Deehr <josh.deehr@afit.edu>
+Maintainer: Josh Deehr <josh.deehr@gmail.com>
 Date: 2017-08-21
 Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
     distributions and increasing or decreasing linear or exponential functions.The SAVF 
