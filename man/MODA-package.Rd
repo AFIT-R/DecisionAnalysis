@@ -61,13 +61,13 @@ sensitivity_plot(SAVF_matrix, weights, qbdata$name, 4)
 
 }
 \author{
-\strong{Maintainer}: Josh Deehr \email{josh.deehr@afit.edu}
+\strong{Maintainer}: Josh Deehr \email{josh.deehr@gmail.com}
 
 Authors:
 \itemize{
-  \item Bradley Boehmke \email{bradleyboehmke@gmail.com}
-  \item Brandon Greenwell \email{greenwell.brandon@gmail.com}
-  \item Andrew McCarthy \email{andrew.mccarthy@theperducogroup.com}
+  \item Christopher Smith \email{Christopher.Smith@afit.edu}
+  \item Jason Freels \email{Jason.Freels@afit.edu}
+  \item Emily Meyer \email{emily.meyer@theperducogroup.com}
 }
 
 }

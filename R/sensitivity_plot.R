@@ -1,6 +1,6 @@
 #'@title Sensitivity Analysis Graph
 #' 
-#'@description Takes a matrix of Single Attribute Value Function (SAVF) scores and show how each alternatives 
+#'@description Takes a matrix of Single Attribute Value Function (SAVF) scores and shows how each alternative's 
 #'MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
 #'
 #'@param SAVF_matrix Matrix of SAVF scores
