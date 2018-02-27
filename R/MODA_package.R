@@ -51,6 +51,9 @@
 #'#Plot sensitivity analysis for shuttle criteria
 #'sensitivity_plot(SAVF_matrix, weights, qbdata$name, 4)
 #'
+#'@seealso
+#'
+#'Report bugs at https://github.com/AFIT-R/MODA
 #'
 "_PACKAGE"
 #> [1] "_PACKAGE"
