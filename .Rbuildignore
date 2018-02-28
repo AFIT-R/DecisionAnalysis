@@ -4,3 +4,6 @@ README.Rmd
 ^\.travis\.yml$
 ^.*\.dll$
 ^.*\.o$
+^revdep$
+cran-comments.md
+cran-comments.Rmd

@@ -5,3 +5,4 @@
 src/*.dll
 src/*.o
 src/*.so
+/revdep/.cache.rds
