@@ -31,5 +31,4 @@ There was 1 NOTE:
  Users reported that this is a false positive when using devtools::check() in Rstudio.
 
 ## Downstream dependencies
-I have also run R CMD check on downstream dependencies of MODA.
-No ERRORs or WARNINGs found.
+There are currently no downstream dependencies of MODA.
