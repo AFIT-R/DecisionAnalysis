@@ -17,7 +17,7 @@ Authors@R: c(
            role = c("aut"))
     )
 Maintainer: Josh Deehr <josh.deehr@gmail.com>
-Date: 2017-08-21
+Date: 2018-03-05
 Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
     distributions and increasing or decreasing linear or exponential functions.The SAVF 
     scores are used, along with a weights matrix, to calculate a Multi Attribute Value 
@@ -29,13 +29,15 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
-Imports: stats, Rcpp (>= 0.12.12), ggplot2, tidyr, dplyr, data.tree, graphics
+Imports: stats, Rcpp (>= 0.12.12), ggplot2, tidyr, dplyr, graphics, data.tree
+Remotes: gluc/data.tree
 RoxygenNote: 6.0.1
 Suggests: 
     knitr,
     rmarkdown,
     testthat,
-    gridExtra
+    gridExtra,
+    viridisLite
 VignetteBuilder: knitr 
 NeedsCompilation: yes
 LinkingTo: Rcpp
