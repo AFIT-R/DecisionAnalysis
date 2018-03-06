@@ -22,7 +22,7 @@ Description: Calculates the Single Attribute Value Function (SAVF) score for cat
     distributions and increasing or decreasing linear or exponential functions.The SAVF 
     scores are used, along with a weights matrix, to calculate a Multi Attribute Value 
     Function (MAVF) score.Additional functions provide the ability to plot the value hierarchy tree, 
-    plot the three types of SAVFs,plot a breakout of each alternatives' MAVF score, and plot a sensitivity
+    plot the three types of SAVFs,plot a breakout of each alternative's MAVF score, and plot a sensitivity
     analysis graph that illustrates how the MAVF scores change if the criteria weights change.
 License: GPL (>= 2)
 Encoding: UTF-8
