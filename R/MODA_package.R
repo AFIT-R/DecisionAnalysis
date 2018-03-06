@@ -23,11 +23,7 @@
 #' 
 #' 
 #'#subset NFLcombine data from MODA package
-#'library(dplyr)
-#'qbdata <- NFLcombine %>%
-#'  filter(year == '2011', position == 'QB', wonderlic != '0') %>%
-#'  select(c(2, 8, 9, 12, 15, 17, 18, 25, 20))  
-#'qbdata[qbdata == 0] = NA
+#'qbdata <- NFLcombine[1:7,]
 #'
 #'#Create SAVF_matrix
 #'Height <- SAVF_exp_score(qbdata$heightinchestotal, 68, 75.21, 82)
