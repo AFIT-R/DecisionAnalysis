@@ -1,6 +1,6 @@
 #'@title Sensitivity Analysis Graph
 #' 
-#'@description Takes a matrix of Single Attribute Value Function (SAVF) scores and show how each alternatives 
+#'@description Takes a matrix of Single Attribute Value Function (SAVF) scores and shows how each alternative's 
 #'MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
 #'
 #'@param SAVF_matrix Matrix of SAVF scores
@@ -44,6 +44,7 @@
 
 sensitivity_plot <- function(SAVF_matrix, weights, names, criteria, title=TRUE){
   
+  #initialize variables used later on
   Names<-NULL
   Weight<-NULL
   Value<-NULL
@@ -59,6 +60,7 @@ sensitivity_plot <- function(SAVF_matrix, weights, names, criteria, title=TRUE){
          'You have provided an object of the following class:\n', 
          'weights: ', class(weights))
   }
+  
   if(sum(weights)< 1) {
     warning('The sum of weights is less than 1')
   }
@@ -83,13 +85,14 @@ sensitivity_plot <- function(SAVF_matrix, weights, names, criteria, title=TRUE){
   i <- criteria
   x <- seq(0, 1, by = .1)
   m <- matrix(NA, nrow = length(weights), ncol = 11)
-
+  
+  
   m<-sapply(1:length(weights), function(j) m[j,]<-(1 - x)*(weights[j] / (1 - weights[i])))
   m<-t(m)
   m[i,] <- x
   M <- data.frame(MAVF_Scores(SAVF_matrix, m, names))
   names(M) <- c("Names", x)
-
+  
   `%>%` <- dplyr::`%>%`
   
   M %>%

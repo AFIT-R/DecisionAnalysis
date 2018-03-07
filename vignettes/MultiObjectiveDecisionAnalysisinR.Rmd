@@ -1,0 +1,255 @@
+---
+title: "Multi Objective Decision Analysis in __R__"
+author: "CPT Josh Deehr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Multi Objective Decision Analysis in __R__}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Prereqs
+\small
+This tutorial uses the MODA::NFLcombine dataset that came from NFLSavant.com. This is a database consisting of NFL Combine data from 1999 to 2015 and is documented in ?MODA::NFLcombine. This tutorial also requires the following packages:
+
+```{r warning=FALSE, message=FALSE}
+library(dplyr)
+library(gridExtra)
+library(knitr)
+```
+
+## Overview
+
+Multi-Objective Decision Analysis (MODA) is a process for making decisions when there are very complex issues involving multiple criteria and multiple parties who may be deeply affected by the outcomes of the decisions.
+
+Using MODA allows individuals to consider and weight factors and trade-offs while evaluating each alternative (in this case, quarterbacks entering the draft). The individuals are then able to discuss the results and trade offs to help decide on a recommendation.
+
+Currently there is very little out there for any multi criteria decision making in __R__. 
+
+- `MCMD`: Package containing different methods for weighting and calculating of alternatives.  Must calculate SAVF matrix before utilizing, offers no sensitivity analysis.
+- `KraljicMatrix`: Solves a specific instance of MCDM, but is not reproducible for other problems.
+
+## MODA Method
+
+MODA consists of ten steps. In this tutorial, we will cover the bolded steps in greater detail.
+
+1. Problem Identification
+
+2. __Identifing and Structuring Objectives__
+
+3. Measuring the Achievement of Objectives
+
+4. __Single Attribute Value Functions__
+
+5. __Multi Attribute Value Functions__
+
+6. Alternative Generation and Screening
+
+7. __Alternative Scoring__
+
+8. __Determanistic Sensitivity__
+
+9. __Sensitivity Analysis__
+
+10. Communicating Results
+
+## Test Data Set
+\small
+Throughout this tutorial we will use a subset of the NFL Combine data so that it is a reasonable amount to work with.  We will limit the data set to quarterbacks from 2011 who have a Wonderlic score, and we will retain their name, height, weight, forty yard dash, shuttle sprint, vertical jump, broad jump, Wonderlic, and draft round. This is referred to as the raw data.
+
+\tiny
+```{r }
+qbdata <- MODA::NFLcombine %>%
+    filter(year == '2011', position == 'QB', wonderlic != '0') %>%
+  select(c(2, 8, 9, 12, 15, 17, 18, 25, 20))  
+qbdata[qbdata == 0] = NA
+names(qbdata) <- c("Name", "Height", "Weight", "Forty", 
+                     "Shuttle", "Vertical", "Broad", "Wonderlic", "Round")
+```
+
+```{r echo=FALSE}
+knitr::kable(qbdata, caption = "Data")
+```
+
+
+## Value Hierarchy
+\small
+A value hierarchy is a way to depict what is important to the decision maker(s) when choosing from the list of alternatives.  Objectives are the evaluation considerations that are deemed to be important.  Each objective is broken down until it can be measured by a single evaluation measure.  In this example the `value_hierarchy_tree` function from the MODA package is used and the evaluation measures are the measurement criteria (height, weight, etc.) that we retained from the database. 
+
+```{r fig.cap="Value Hierarchy", fig.align='center', fig.width=7, fig.height=4}
+branches<- as.data.frame(matrix(ncol=4,nrow=7))
+names(branches)<-c("Level1","Level2","Level3","leaves")
+branches[1,]<-rbind("QB","Elusiveness","Speed","Forty")
+branches[2,]<-rbind("QB","Elusiveness","Agility","Shuttle")
+branches[3,]<-rbind("QB","Size","","Height")
+branches[4,]<-rbind("QB","Size","","Weight")
+branches[5,]<-rbind("QB","Intelligence","","Wonderlic")
+branches[6,]<-rbind("QB","Strength","Explosiveness","Vertical")
+branches[7,]<-rbind("QB","Strength","Power","Broad")
+
+MODA::value_hierarchy_tree(branches$Level1,branches$Level2,branches$Level3,
+leaves=branches$leaves, nodefillcolor = "LightBlue", leavesfillcolor = "Blue", leavesfontcolor = "White")
+
+```
+
+## Value Measures
+\small
+Taking the evaluation measures that were determined from the value hierarchy, high and low bounds are determined for each criteria.  End points are limited to those that fell within the "acceptable" region. This allows us to convert raw data into a criteria score in the next step.  
+
+Below shows the table of value measures for out test data set:
+
+\tiny
+
+|Value Measure  |Low  |High |Measurement                                    |
+|:---           |:--- |:--- |:---                                           |
+|Height         |68   |82   |Total height in inches                         |
+|Weight         |185  |275  |Total weight in pounds                         |
+|Forty Yard Dash|4.3  |5.4  |Time in seconds to run forty yards             |
+|Shuttle Sprint |3.8  |4.9  |Time in seconds to complete shuttle sprint     |
+|Vertical Jump  |21   |40   |Height player jumped vertically in inches      |
+|Broad Jump     |90   |130  |Distance traveled during broad jump in inches  |
+|Wonderlic Score|0    |50   |Raw score received on Wonderlic Test           |
+Table: Value Measures
+
+## Single Attribute Value Function
+\small
+Single Value Attribute Functions (SAVF) are used to calculate an individual criteria score from the raw data. The three types of SAVFs are exponential, linear, and categorical. The SAVFs can be either increasing or decreasing. 
+
+The bisection technique was used for the linear and exponential SAVFs.  To find the bisection, or mid-value point, the decision maker is asked to identify the halfway mark for each value measurement. Below is an example of the three plots using the three MODA SAVF plot functions:
+
+```{r warning=FALSE, fig.asp=.75, fig.align='center',fig.width=6, fig.height=5}
+a1 <- MODA::SAVF_exp_plot(90, 0, 120, 150)
+a2 <- MODA::SAVF_linear_plot(10, 0, 20, 100, FALSE)
+a3 <- MODA::SAVF_cat_plot(c("Tom", "Bill", "Jerry"), c(0.1, 0.25, 0.65))
+gridExtra::grid.arrange(a1, a2, a3, ncol = 2)
+```
+
+
+## SAVF Matrix
+\small
+For our test data set, the exponential SAVF was used with the mid point of each criteria being the mean value of all _drafted_ quarterbacks.  The exponential SAVFs were calculated for each criteria using the MODA `SAVF_exp_score` function then put into a matrix using `cbind`. The `SAVF_linear_score` and  `SAVF_categorical_score` are additional functions that can be used in place of SAVF_exp_score, where applicable.
+
+Below is the SAVF matrix for the test data set:
+\tiny
+
+```{r }
+Height <- round(MODA::SAVF_exp_score(qbdata$Height , 68, 75.21, 82), 3)
+Weight <- round(MODA::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275), 3)
+Forty <- round(MODA::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, FALSE), 3)
+Shuttle <- round(MODA::SAVF_exp_score(qbdata$Shuttle, 3.8, 4.3, 4.9, FALSE), 3)
+Vertical <- round(MODA::SAVF_exp_score(qbdata$Vertical, 21, 32.04, 40), 3)
+Broad <- round(MODA::SAVF_exp_score(qbdata$Broad, 90, 111.24, 130), 3)
+Wonderlic <- round(MODA::SAVF_exp_score(qbdata$Wonderlic, 0, 27.08, 50), 3)
+
+SAVF_matrix = cbind(qbdata$Name, Height, Weight, Forty, Shuttle, 
+                    Vertical, Broad, Wonderlic)
+SAVF_matrix[is.na(SAVF_matrix)] <- 0
+
+knitr::kable(SAVF_matrix, caption = "SAVF Scores")
+```
+
+## Multi Attribute Value Function
+\small
+The final step in determining the alternative's score is to calculate the Multi Attribute Value Function (MAVF) score.  This can be done using a variety of different methods, the simplest being the use of a weight vector that multiplies each attribute's SAVF by some relative measure of importance.  The weights vector is normalized so that the sum of weights is equal to one. The `value_hierarchy_tree` function from a previous example is used again here, but with a weights input. The weights for the test set is below:
+
+```{r, fig.align='center', fig.cap="Weighted Value Hierarchy",fig.width=7, fig.height=4}
+branches<- as.data.frame(matrix(ncol=5,nrow=7))
+names(branches)<-c("Level1","Level2","Level3","leaves","weights")
+branches[1,]<-rbind("QB","Elusiveness","Speed","Forty","0.092")
+branches[2,]<-rbind("QB","Elusiveness","Agility","Shuttle","0.138")
+branches[3,]<-rbind("QB","Size","","Height","0.096")
+branches[4,]<-rbind("QB","Size","","Weight","0.224")
+branches[5,]<-rbind("QB","Intelligence","","Wonderlic","0.07")
+branches[6,]<-rbind("QB","Strength","Explosiveness","Vertical","0.152")
+branches[7,]<-rbind("QB","Strength","Power","Broad","0.228")
+
+MODA::value_hierarchy_tree(branches$Level1,branches$Level2,branches$Level3,
+leaves=branches$leaves,weights=branches$weights, nodefillcolor = "LightBlue", leavesfillcolor = "Blue", leavesfontcolor = "White")
+```
+
+
+## MAVF Scores
+\small
+The MAVF scores were calculated using the `MAVF_Scores` function which take the SAVF matrix and multiplies each SAVF score by the associated weight and summing all weighted scores for each alternative returning a single alternative score.  
+
+For example, taking Cam Newton from the test data set:
+
+\tiny
+(0.096)(0.63)+(0.224)(0.75)+(0.092)(0.737)+(0.14)(0.613)+(0.15)(0.67)+(0.23)(0.89)+(0.07)(0.38) = 0.712
+
+\small
+Below shows all values from our test data set using the `MAVF_Scores` function:
+
+```{r }
+Height <- round(MODA::SAVF_exp_score(qbdata$Height , 68, 75.21, 82), 3)
+Weight <- round(MODA::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275), 3)
+Forty <- round(MODA::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, FALSE), 3)
+Shuttle <- round(MODA::SAVF_exp_score(qbdata$Shuttle, 3.8, 4.3, 4.9, FALSE), 3)
+Vertical <- round(MODA::SAVF_exp_score(qbdata$Vertical, 21, 32.04, 40), 3)
+Broad <- round(MODA::SAVF_exp_score(qbdata$Broad, 90, 111.24, 130), 3)
+Wonderlic <- round(MODA::SAVF_exp_score(qbdata$Wonderlic, 0, 27.08, 50), 3)
+
+SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, 
+                    Vertical, Broad, Wonderlic)
+weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
+names = qbdata$Name
+
+MAVF <- MODA::MAVF_Scores(SAVF_matrix, weights, names)
+knitr::kable(MAVF, digits = 4, row.names = FALSE, caption = "MAVF Scores")
+```
+
+## Breakout Graph
+\small
+After the alternatives were scored, initial analysis is conducted to ensure the rankings are easily understandable and to see if there are any insights or improvements that can be identified. This is done by looking at the deterministic sensitivity of each alternative. 
+
+The value breakout graph allows for a quick and easy comparison of how each attribute affected the alternatives. Using the MODA `MAVF_breakout` function the breakout graph below was created from the test data:
+
+```{r fig.asp=.75, fig.align='center', fig.cap="MAVF Breakout Graph", fig.width=6, fig.height=5}
+Height <- MODA::SAVF_exp_score(qbdata$Height, 68, 75.21, 82, 1)
+Weight <- MODA::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275, 1)
+Forty <- MODA::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, 2)
+Shuttle <- MODA::SAVF_exp_score(qbdata$Shuttle, 3.8, 4.3, 4.9, 2)
+Vertical <- MODA::SAVF_exp_score(qbdata$Vertical, 21, 32.04, 40, 1)
+Broad <- MODA::SAVF_exp_score(qbdata$Broad, 90, 111.24, 130, 1)
+Wonderlic <- MODA::SAVF_exp_score(qbdata$Wonderlic, 0, 27.08, 50, 1)
+  
+SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, 
+                      Vertical, Broad, Wonderlic)
+weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
+names = qbdata$Name
+
+MODA::MAVF_breakout(SAVF_matrix, weights, names)
+```
+
+## Sensitivity Analysis
+\small
+Once it is concluded that the model is valid, sensitivity analysis is conducted to determine the impact on the rankings of alternatives to changes in the various assumptions of the model, specifically the weights. The weights represent the relative importance that is attached to each evaluation measure. Using the MODA `sensitivity_plot` function, the sensitivity analysis plot for the shuttle criteria in the test set is below:
+
+```{r fig.asp=.8, fig.align='center', fig.cap="Sensitivity Analysis", fig.width=6, fig.height=5}
+Height <- round(MODA::SAVF_exp_score(qbdata$Height , 68, 75.21, 82), 3)
+Weight <- round(MODA::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275), 3)
+Forty <- round(MODA::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, FALSE), 3)
+Shuttle <- round(MODA::SAVF_exp_score(qbdata$Shuttle, 3.8, 4.3, 4.9, FALSE), 3)
+Vertical <- round(MODA::SAVF_exp_score(qbdata$Vertical, 21, 32.04, 40), 3)
+Broad <- round(MODA::SAVF_exp_score(qbdata$Broad, 90, 111.24, 130), 3)
+Wonderlic <- round(MODA::SAVF_exp_score(qbdata$Wonderlic, 0, 27.08, 50), 3)
+
+SAVF_matrix = cbind(Height, Weight, Forty, Shuttle, 
+                    Vertical, Broad, Wonderlic)
+  
+weights = c(0.096, 0.224, 0.092, 0.138, 0.152, 0.228, 0.07)
+
+MODA::sensitivity_plot(SAVF_matrix, weights, qbdata$Name, 4)
+```
+
+## Practice Problems
+
+1. Change the year to "2004", how many quarterbacks were at the combine?
+
+2. Calculate the MAVF scores and include the round the QB was drafted, who was the highest ranked?
+
+3. Does anything seem out of place?
+
+## References
+
+Kirkwood, Craig W. _Strategic Decision Making_. Wadsworth Publishing Company, 1997.

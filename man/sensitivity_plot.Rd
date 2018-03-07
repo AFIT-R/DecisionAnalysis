@@ -21,7 +21,7 @@ sensitivity_plot(SAVF_matrix, weights, names, criteria, title = TRUE)
 Sensitivity Analysis graph
 }
 \description{
-Takes a matrix of Single Attribute Value Function (SAVF) scores and show how each alternatives 
+Takes a matrix of Single Attribute Value Function (SAVF) scores and shows how each alternative's 
 MAVF scores change as the weight for that criteria changes from zero to one. The vertical black line represents the current weight.
 }
 \examples{

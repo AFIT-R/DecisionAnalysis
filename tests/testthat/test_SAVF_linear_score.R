@@ -13,4 +13,6 @@ test_that("SAVF_linear_score has correct dimensions and output type",{
 test_that("SAVF_linear_score computes correctly",{
   expect_equal(round(SAVF_linear_score(10, 0, 25, 100), 1),0.2)
   expect_equal(round(SAVF_linear_score(5, 2, 7, 12, FALSE), 1),0.7)
+  expect_equal(round(SAVF_linear_score(30, 0, 25, 100), 1),0.5)
+  expect_equal(round(SAVF_linear_score(9, 2, 7, 12, FALSE), 1),0.3)
 })

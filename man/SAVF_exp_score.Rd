@@ -22,7 +22,7 @@ Exponential SAVF Score
 }
 \description{
 : Calculates the Single Attribute Values Function (SAVF) score for an exponentially increasing or decreasing function. 
-It calls the SAVF_calc_rho function, so knowing rho before hand is not necessary.
+It calls the SAVF_calc_rho function, so knowing rho beforehand is not necessary.
 }
 \details{
 For Z=((x_mid - x_low) / (x_high - x_low)),

@@ -15,31 +15,31 @@ If there isn't a node for a level of the branch, it should be entered as ""}
 
 \item{leaves}{Character vector of values containing the last node of the branches}
 
-\item{weights}{Character or numeric vector of weights associated with the end node of the branches}
+\item{weights}{Character or numeric vector of weights associated with the end node of the branches (Optional)}
 
-\item{nodestyle}{Style of the nodes}
+\item{nodestyle}{Style of the nodes, default is filled, rounded}
 
-\item{nodeshape}{Shape of the nodes. Polygon, ellipse, circle, box, etc.}
+\item{nodeshape}{Shape of the nodes, default is box}
 
-\item{nodefillcolor}{Fill color of the nodes}
+\item{nodefillcolor}{Fill color of the nodes, default is white}
 
-\item{nodefontname}{Font of the nodes}
+\item{nodefontname}{Font of the nodes, default is helvetica}
 
-\item{nodefontcolor}{Font color of the nodes}
+\item{nodefontcolor}{Font color of the nodes, default is black}
 
-\item{leavesshape}{Shape of the leaves}
+\item{leavesshape}{Shape of the leaves, default is egg}
 
-\item{leavesfillcolor}{Fill color of the leaves}
+\item{leavesfillcolor}{Fill color of the leaves, default is gray}
 
-\item{leavesfontcolor}{Font color of the leaves}
+\item{leavesfontcolor}{Font color of the leaves, default is black}
 
-\item{leavesfontname}{Font of the leaves}
+\item{leavesfontname}{Font of the leaves, default is helvetica}
 }
 \value{
 Value hierarchy tree plot
 }
 \description{
-: Plots a value hierarchy tree with weights on the leaves (end nodes)
+: Plots a value hierarchy tree
 }
 \examples{
 \dontrun{ branches<- as.data.frame(matrix(ncol=5,nrow=7))

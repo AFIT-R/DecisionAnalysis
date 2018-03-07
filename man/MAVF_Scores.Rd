@@ -23,7 +23,7 @@ alternatives MAVF score.
 \examples{
 \dontrun{ 
 
-qbdata <- NFLcombine
+qbdata <- NFLcombine[1:7,]
 
 Height <- SAVF_exp_score(qbdata$heightinchestotal, 68, 75.21, 82)
 Weight <- SAVF_exp_score(qbdata$weight, 185, 224.34, 275)

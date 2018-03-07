@@ -1,40 +1,43 @@
 Package: MODA
 Type: Package
 Title: Implementation of Multi Objective Decision Analysis
-Version: 0.1.0.9000
+Version: 0.1.0
 Authors@R: c( 
     person("Josh", "Deehr", 
-           email = "josh.deehr@afit.edu", 
+           email = "josh.deehr@gmail.com", 
            role = c("aut", "cre")), 
-    person("Bradley", "Boehmke", 
-           email = "bradleyboehmke@gmail.com", 
+    person("Christopher", "Smith", 
+           email = "Christopher.Smith@afit.edu", 
            role = c("aut")),
-    person("Brandon", "Greenwell",
-           email = "greenwell.brandon@gmail.com",
+    person("Jason", "Freels",
+           email = "Jason.Freels@afit.edu",
            role = c("aut")),
-    person("Andrew", "McCarthy",
-           email = "andrew.mccarthy@theperducogroup.com",
+    person("Emily", "Meyer",
+           email = "emily.meyer@theperducogroup.com",
            role = c("aut"))
     )
-Maintainer: Josh Deehr <josh.deehr@afit.edu>
-Date: 2017-08-21
+Maintainer: Josh Deehr <josh.deehr@gmail.com>
+Date: 2018-03-05
 Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
     distributions and increasing or decreasing linear or exponential functions.The SAVF 
     scores are used, along with a weights matrix, to calculate a Multi Attribute Value 
     Function (MAVF) score.Additional functions provide the ability to plot the value hierarchy tree, 
-    plot the three types of SAVFs,plot a breakout of each alternatives' MAVF score, and plot a sensitivity
+    plot the three types of SAVFs,plot a breakout of each alternative's MAVF score, and plot a sensitivity
     analysis graph that illustrates how the MAVF scores change if the criteria weights change.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
-Imports: stats, Rcpp (>= 0.12.12), ggplot2, tidyr, dplyr, data.tree, graphics
+Imports: stats, Rcpp (>= 0.12.12), ggplot2, tidyr, dplyr, graphics, data.tree
+Remotes: gluc/data.tree
 RoxygenNote: 6.0.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    gridExtra,
+    viridisLite
 VignetteBuilder: knitr 
 NeedsCompilation: yes
 LinkingTo: Rcpp
