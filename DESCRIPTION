@@ -1,4 +1,4 @@
-Package: MODA
+Package: DecisionAnalysis
 Type: Package
 Title: Implementation of Multi Objective Decision Analysis
 Version: 0.1.0
@@ -17,7 +17,7 @@ Authors@R: c(
            role = c("aut"))
     )
 Maintainer: Josh Deehr <josh.deehr@gmail.com>
-BugReports: https://github.com/AFIT-R/MODA
+BugReports: https://github.com/AFIT-R/DecisionAnalysis
 Date: 2018-03-05
 Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
     distributions and increasing or decreasing linear or exponential functions.The SAVF 

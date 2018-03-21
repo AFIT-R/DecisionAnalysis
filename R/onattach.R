@@ -9,5 +9,5 @@
   }
   
   # Display hint
-  packageStartupMessage( "To see the user guide use `browseVignettes('MODA')`")
+  packageStartupMessage( "To see the user guide use `browseVignettes('DecisionAnalysis')`")
 }
