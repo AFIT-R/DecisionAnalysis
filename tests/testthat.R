@@ -1,4 +1,4 @@
 library(testthat)
-library(MODA)
+library(DecisionAnalysis)
 
-test_check("MODA")
+test_check("DecisionAnalysis")
