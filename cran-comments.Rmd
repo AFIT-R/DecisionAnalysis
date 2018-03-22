@@ -19,16 +19,24 @@ knitr::opts_chunk$set(
 ## Test environments
 * local win install, R 3.4.3
 * ubuntu 14.04.5 (on travis-ci), R 3.4.2
+* rhub check for cran
 
 ## R CMD check results
 There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE:
+There were 2 NOTEs:
 
-* File 'MODA/libs/x64/MODA.dll':
+* File 'DecisionAnalysis/libs/x64/DecisionAnalysis.dll':
   Found no calls to: 'R_registerRoutines', 'R_useDynamicSymbols'
 
- Users reported that this is a false positive when using devtools::check() in Rstudio.
+ \newline Users reported that this is a false positive when using devtools::check() in Rstudio.
+ 
+* Possibly mis-spelled words in DESCRIPTION:
+     MAVF (25:15, 26:73, 27:45)
+     SAVF (22:62, 23:84)
+     SAVFs (26:29)
+     
+  \newline These are acronyms and are defined in the description.
 
 ## Downstream dependencies
 There are currently no downstream dependencies of MODA.
