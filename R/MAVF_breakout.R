@@ -10,7 +10,7 @@
 #'@return MAVF breakout graph
 #'
 #'@importFrom ggplot2 ggplot geom_bar coord_flip ylab xlab ggtitle
-#'@importFrom dplyr %>% group_by
+#'@importFrom dplyr %>% group_by quo
 #'@importFrom stats reorder
 #'@importFrom tidyr gather
 #'
@@ -63,9 +63,9 @@ MAVF_breakout <- function(SAVF_matrix, weights, names){
   if(nrow(SAVF_matrix) != length(names) ) {
     stop('The number of rows in the SAVF matrix must equal the length of the vector of names')
   }
-
-  Measurement<-NULL
-  Value<-NULL
+  
+  Measurement <- dplyr::quo(Measurement)
+  Value <- dplyr::quo(Value)
   
   SAVF_matrix[is.na(SAVF_matrix)] <- 0
   SAVF <- t(SAVF_matrix) * weights
