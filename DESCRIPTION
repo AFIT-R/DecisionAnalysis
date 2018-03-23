@@ -37,7 +37,8 @@ Suggests:
     rmarkdown,
     testthat,
     gridExtra,
-    viridisLite
+    viridisLite,
+    Cairo
 VignetteBuilder: knitr 
 NeedsCompilation: yes
 LinkingTo: Rcpp
