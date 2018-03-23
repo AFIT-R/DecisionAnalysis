@@ -13,9 +13,11 @@ vignette: >
 This tutorial uses the DecisionAnalysis::NFLcombine dataset that came from NFLSavant.com. This is a database consisting of NFL Combine data from 1999 to 2015 and is documented in ?DecisionAnalysis::NFLcombine. This tutorial also requires the following packages:
 
 ```{r warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.align = "center", options(bitmapType='cairo'))
 library(dplyr)
 library(gridExtra)
 library(knitr)
+library(Cairo)
 ```
 
 ## Overview
@@ -132,7 +134,7 @@ For our test data set, the exponential SAVF was used with the mid point of each 
 Below is the SAVF matrix for the test data set:
 \tiny
 
-```{r }
+```{r}
 Height <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Height , 68, 75.21, 82), 3)
 Weight <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275), 3)
 Forty <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, FALSE), 3)
@@ -180,7 +182,7 @@ For example, taking Cam Newton from the test data set:
 \small
 Below shows all values from our test data set using the `MAVF_Scores` function:
 
-```{r }
+```{r}
 Height <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Height , 68, 75.21, 82), 3)
 Weight <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Weight, 185, 224.34, 275), 3)
 Forty <- round(DecisionAnalysis::SAVF_exp_score(qbdata$Forty, 4.3, 4.81, 5.4, FALSE), 3)
