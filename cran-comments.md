@@ -4,7 +4,8 @@ Test environments
 
 -   local win install, R 3.4.3
 -   ubuntu 14.04.5 (on travis-ci), R 3.4.2
--   rhub check for cran
+-   Ubuntu Linux 16.04 LTS, R-release, GCC (on rhub)
+-   Windows Server 2008 R2 SP1, R-devel, 32/64 bi (on rhub)
 
 R CMD check results
 -------------------
