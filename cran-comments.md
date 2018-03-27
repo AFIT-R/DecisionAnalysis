@@ -25,4 +25,4 @@ These are acronyms and are defined in the description.
 Downstream dependencies
 -----------------------
 
-There are currently no downstream dependencies of MODA.
+There are currently no downstream dependencies of DecisionAnalysis.
