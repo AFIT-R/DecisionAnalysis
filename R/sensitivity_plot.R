@@ -13,7 +13,7 @@
 #'@return Sensitivity Analysis graph
 #'
 #'@importFrom ggplot2 ggplot geom_line ylab xlab geom_vline aes labs
-#'@importFrom dplyr %>%
+#'@importFrom dplyr %>% quo
 #'@importFrom tidyr gather
 #'
 #'@examples
@@ -45,9 +45,9 @@
 sensitivity_plot <- function(SAVF_matrix, weights, names, criteria, title=TRUE){
   
   #initialize variables used later on
-  Names<-NULL
-  Weight<-NULL
-  Value<-NULL
+  Names <- dplyr::quo(Names)
+  Weight <- dplyr::quo(Weight)
+  Value <- dplyr::quo(Value)
   
   if(class(SAVF_matrix) != "matrix") {
     stop('SAVF_matrix must be a matrix\n',

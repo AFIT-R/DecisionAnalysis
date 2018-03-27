@@ -12,6 +12,7 @@
 #' @return Linear SAVF curve with attribute plotted
 #' 
 #' @importFrom ggplot2 ggplot geom_line geom_point xlab ylab
+#' @importFrom dplyr quo
 #' 
 #' @examples
 #'\dontrun{ SAVF_linear_plot(10, 0, 25, 100, FALSE)}
@@ -27,7 +28,7 @@ SAVF_linear_plot <- function(x, x_low, x_mid, x_high, increasing = TRUE) {
     stop('The input for x_mid exceeds x_high')
   }
   
-  v<-NULL
+  v <- dplyr::quo(v)
   
   if (increasing == TRUE) {
     x_desired <- x

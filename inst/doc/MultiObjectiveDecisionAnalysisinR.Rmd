@@ -1,6 +1,6 @@
 ---
 title: "Multi Objective Decision Analysis in __R__"
-author: "CPT Josh Deehr"
+author: "Josh Deehr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Multi Objective Decision Analysis in __R__}

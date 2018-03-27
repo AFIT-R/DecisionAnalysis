@@ -1,10 +1,10 @@
-#' MODA: Multi-Objective Decision Analysis
+#' DecisionAnalysis: Multi-Objective Decision Analysis
 #'
-#' The MODA package contains all of the necessary functions required to plot weighted and unweighted value hierarchy trees, calculate and plot linear, exponential, and categorical single attribute value functions, 
+#' The DecisionAnalysis package contains all of the necessary functions required to plot weighted and unweighted value hierarchy trees, calculate and plot linear, exponential, and categorical single attribute value functions, 
 #' calculate and graph multi value attribute functions, and conduct sensitivity analysis.
 #' 
-#' Start with the vignette to learn more about using the MODA package:
-#' browseVignettes(package = "MODA")
+#' Start with the vignette to learn more about using the DecisionAnalysis package:
+#' browseVignettes(package = "DecisionAnalysis")
 #'
 #' @examples 
 #'
@@ -22,7 +22,7 @@
 #'leaves=branches$leaves,weights=branches$weights)
 #' 
 #' 
-#'#subset NFLcombine data from MODA package
+#'#subset NFLcombine data from DecisionAnalysis package
 #'qbdata <- NFLcombine[1:7,]
 #'
 #'#Create SAVF_matrix
@@ -49,11 +49,11 @@
 #'
 #'@seealso
 #'
-#'Report bugs at https://github.com/AFIT-R/MODA
+#'Report bugs at https://github.com/AFIT-R/DecisionAnalysis
 #'
 "_PACKAGE"
 #> [1] "_PACKAGE"
 
-#'@useDynLib MODA
+#'@useDynLib DecisionAnalysis
 #'@importFrom Rcpp evalCpp
 NULL

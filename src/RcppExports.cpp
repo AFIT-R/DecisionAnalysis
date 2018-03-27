@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // rcpp_hello_world
 List rcpp_hello_world();
-RcppExport SEXP _MODA_rcpp_hello_world() {
+RcppExport SEXP _DecisionAnalysis_rcpp_hello_world() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -17,11 +17,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_MODA_rcpp_hello_world", (DL_FUNC) &_MODA_rcpp_hello_world, 0},
+    {"_DecisionAnalysis_rcpp_hello_world", (DL_FUNC) &_DecisionAnalysis_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_MODA(DllInfo *dll) {
+RcppExport void R_init_DecisionAnalysis(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 rcpp_hello_world <- function() {
-    .Call('_MODA_rcpp_hello_world', PACKAGE = 'MODA')
+    .Call('_DecisionAnalysis_rcpp_hello_world', PACKAGE = 'DecisionAnalysis')
 }
 
