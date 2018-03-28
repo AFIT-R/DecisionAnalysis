@@ -31,13 +31,18 @@ Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
-Imports: stats, ggplot2, tidyr, dplyr, graphics, data.tree
+Imports: stats, 
+         ggplot2, 
+         tidyr, 
+         dplyr, 
+         graphics, 
+         data.tree,
+         gridExtra,
+         viridisLite,
+         Cairo
 RoxygenNote: 6.0.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat,
-    gridExtra,
-    viridisLite,
-    Cairo
+    testthat
 VignetteBuilder: knitr
