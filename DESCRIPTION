@@ -16,7 +16,7 @@ Authors@R: c(
            email = "emily.meyer@theperducogroup.com",
            role = c("aut"))
     )
-Maintainer: Josh Deehr <josh.deehr@gmail.com>
+Maintainer: Chris Smith <Christopher.Smith@afit.edu>
 BugReports: https://github.com/AFIT-R/DecisionAnalysis
 Date: 2018-03-05
 Description: Calculates the Single Attribute Value Function (SAVF) score for categorical
