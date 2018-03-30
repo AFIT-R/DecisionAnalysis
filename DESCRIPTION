@@ -5,27 +5,23 @@ Version: 0.1.0
 Authors@R: c( 
     person("Josh", "Deehr", 
            email = "josh.deehr@gmail.com", 
-           role = c("aut")), 
+           role = c("aut","cre")), 
     person("Christopher", "Smith", 
-           email = "Christopher.Smith@afit.edu", 
-           role = c("aut", "cre")),
+           email = "Cms3am@virginia.edu", 
+           role = c("aut")),
     person("Jason", "Freels",
-           email = "Jason.Freels@afit.edu",
+           email = "auburngrads@live.com",
            role = c("aut")),
     person("Emily", "Meyer",
            email = "emily.meyer@theperducogroup.com",
            role = c("aut"))
     )
-Maintainer: Chris Smith <Christopher.Smith@afit.edu>
+Maintainer: Josh Deehr <josh.deehr@gmail.com>
 BugReports: https://github.com/AFIT-R/DecisionAnalysis
 Date: 2018-03-05
-Description: Calculate single attribute value function scores for categorical
-    distributions, increasing/decreasing linear functions or exponential functions. 
-    Use single attribute value function scores to calculate a multi attribute 
-    value function scores. Generate plots for the value hierarchy tree, three 
-    types of single attribute value functions, breakouts of each alternative's 
-    multi attribute value function, and plot a sensitivity
-    analysis graph that illustrates how the MAVF scores change if the criteria weights change.
+Description: Aides in the multi objective decision analysis process by simplifying the creation of value hierarchy tree plots, 
+  calculating and plotting single and multi attribute value function scores, and conducting sensitivity analysis. Linear, exponential, 
+  and categorical single attribute value functions are supported.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
