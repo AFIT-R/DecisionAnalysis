@@ -10,17 +10,7 @@ Test environments
 R CMD check results
 -------------------
 
-There were no ERRORs or WARNINGs.
-
-There were 2 NOTEs:
-
--   File 'DecisionAnalysis/libs/x64/DecisionAnalysis.dll': Found no calls to: 'R\_registerRoutines', 'R\_useDynamicSymbols'
-
-Users reported that this is a false positive when using devtools::check() in Rstudio.
-
--   Possibly mis-spelled words in DESCRIPTION: MAVF (25:15, 26:73, 27:45) SAVF (22:62, 23:84) SAVFs (26:29)
-
-These are acronyms and are defined in the description.
+There were no NOTES, ERRORs or WARNINGs.
 
 Downstream dependencies
 -----------------------
