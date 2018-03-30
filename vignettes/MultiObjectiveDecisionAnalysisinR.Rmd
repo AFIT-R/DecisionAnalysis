@@ -13,7 +13,9 @@ vignette: >
 This tutorial uses the DecisionAnalysis::NFLcombine dataset that came from NFLSavant.com. This is a database consisting of NFL Combine data from 1999 to 2015 and is documented in ?DecisionAnalysis::NFLcombine. This tutorial also requires the following packages:
 
 ```{r warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(collapse = TRUE, fig.align = "center", options(bitmapType='cairo'))
+knitr::opts_chunk$set(collapse = TRUE, 
+                      fig.align = "center",
+                      options(bitmapType='cairo'))
 library(dplyr)
 library(gridExtra)
 library(knitr)

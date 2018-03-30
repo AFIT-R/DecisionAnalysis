@@ -59,11 +59,11 @@ sensitivity_plot(SAVF_matrix, weights, qbdata$name, 4)
 Report bugs at https://github.com/AFIT-R/DecisionAnalysis
 }
 \author{
-\strong{Maintainer}: Josh Deehr \email{josh.deehr@gmail.com}
+\strong{Maintainer}: Christopher Smith \email{Christopher.Smith@afit.edu}
 
 Authors:
 \itemize{
-  \item Christopher Smith \email{Christopher.Smith@afit.edu}
+  \item Josh Deehr \email{josh.deehr@gmail.com}
   \item Jason Freels \email{Jason.Freels@afit.edu}
   \item Emily Meyer \email{emily.meyer@theperducogroup.com}
 }

@@ -54,6 +54,7 @@
 "_PACKAGE"
 #> [1] "_PACKAGE"
 
-#'@useDynLib DecisionAnalysis
-#'@importFrom Rcpp evalCpp
+#' @import Cairo
+#' @import viridisLite
+#' @import gridExtra
 NULL
