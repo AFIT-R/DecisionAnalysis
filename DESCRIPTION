@@ -18,7 +18,7 @@ Authors@R: c(
     )
 Maintainer: Josh Deehr <josh.deehr@gmail.com>
 BugReports: https://github.com/AFIT-R/DecisionAnalysis
-Date: 2018-03-05
+Date: 2018-03-30
 Description: Aides in the multi objective decision analysis process by simplifying the creation of value hierarchy tree plots, 
   calculating and plotting single and multi attribute value function scores, and conducting sensitivity analysis. Linear, exponential, 
   and categorical single attribute value functions are supported.
