@@ -18,7 +18,7 @@ The DecisionAnalysis package contains all of the necessary functions required to
 Installation
 ------------
 
-The `DecisionAnalysis` package is currently in development and only available from GitHub, but can easily be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package:
+The `DecisionAnalysis` package is now availible on CRAN, but can also be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package:
 
     if (!requireNamespace("devtools")) install.packages("devtools")
     devtools::install_github("AFIT-R/DecisionAnalysis")
